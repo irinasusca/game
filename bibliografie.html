@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Titel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700&display=swap" rel="stylesheet">
+    <style>
+        
+        * {
+        box-sizing: border-box;
+        }
+
+       body {
+        
+        
+        display: flex;
+            justify-content: center;
+            align-items: center;
+      
+            height: 100vh;
+            margin: 0;
+            font-family: 'IM Fell English SC', serif; 
+       }
+       
+      
+
+       .main {
+            width: 1200px;
+            height: 800px;
+            background-image: url('assets/revolta.png');
+            background-size: cover;
+            background-position: center;
+            overflow-y: auto;
+            border-radius: 10px;
+            padding: 30px;
+            padding-top:50px;
+    }
+
+    .textbox-wrapper {
+      position: relative;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .textbox-wrapper img {
+      width: 100%;
+      display: block;
+    }
+
+    .text {
+        
+      position: absolute;
+      top: 25%;
+      left: 8%;
+      width: 85%;
+      font-size: 24px;
+      color: #302d2a;
+    }
+
+    .images {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    
+    .image-item {
+        
+      width: 210px;
+      height: 210px;
+      background-size: cover;
+      background-position: top;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      border-radius: 10px;
+      border: white 1px solid;
+    }
+
+    .image-title {
+      width: 100%;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 6px;
+      font-size: 16px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    .link-table {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 50px;
+        padding-bottom: 20px;
+        }
+
+        .link-row {
+        display: flex;
+        justify-content: space-between;
+        }
+
+        .link-cell {
+        flex: 1;
+        text-align: center;
+        text-decoration: underline;
+        color: white;
+        font-size: 24px; /* same as textbox text */
+        font-family: 'IM Fell English SC', serif;
+        }
+
+        .back-button {
+            position: absolute;
+            
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            font-size: 30px;
+            top:11%;
+            margin-left:20px;
+            border-radius: 10px;
+            border: white solid 1px;
+            z-index: 100;
+            
+        }
+
+       
+                
+    </style>
+</head>
+<body>
+
+    <div class="main">
+
+        <a href="index.html"><div class="back-button">Înapoi</div></a>
+        <div class="textbox-wrapper">
+            <img src="assets/dialogue.png" alt="Text Box">
+            <div class="text">
+              Acest hic vkavkavkac fwwuif uwefu wfkjw efjk ejkwejw e wfjw efjkwfkj jkwfe jkwfejk wfejkw e w
+              wfwkl jwkwej j wejkweg wjkeg jkwe jkwfej fkj wejk jke jkwejk wefjk wejk fj wfejkjk efjkw jwek 
+              wfklklwef klwe klwe klwefklwef klwefkl wefklwkefl wkel fwkl klw fkwe klwef klwflkwefklklwe
+              wfeklwekfklwefklweflkwelkfwklwekfwk lkl wekl klwe klw
+            </div>
+          </div>
+
+        <div class="images">
+            <div class="image-item" style="background-image: url('assets/council.png');">
+                <div class="image-title">Title 1</div>
+              </div>
+              <div class="image-item" style="background-image: url('assets/meijiRain.jpg');">
+                <div class="image-title">Title 2</div>
+              </div>
+              <div class="image-item" style="background-image: url('assets/revolta.png');">
+                <div class="image-title">Title 3</div>
+              </div>
+              <div class="image-item" style="background-image: url('assets/rain.png');">
+                <div class="image-title">Title 4</div>
+              </div>
+              <div class="image-item" style="background-image: url('assets/wref.jpg');">
+                <div class="image-title">Title 5</div>
+              </div>
+        </div>
+
+        <div class="link-table">
+            <div class="link-row">
+              <a href="#" class="link-cell">Link</a>
+              <a href="#" class="link-cell">Link</a>
+              <a href="#" class="link-cell">Link</a>
+            </div>
+            <div class="link-row">
+              <a href="#" class="link-cell">Link</a>
+              <a href="#" class="link-cell">Link</a>
+              <a href="#" class="link-cell">Link</a>
+            </div>
+
+            <div class="link-row">
+                <a href="#" class="link-cell">Link</a>
+                <a href="#" class="link-cell">Link</a>
+                <a href="#" class="link-cell">Link</a>
+              </div>
+          </div>
+
+    </div>
+
+
+</body>
+</html>
