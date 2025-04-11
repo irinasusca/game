@@ -31,17 +31,10 @@ class TutorialScene extends BattleScene
 
     create()
     {
-        if (!this.sound.get('music_battle')) {
-            // Stop any currently playing track
-            let currentMusic = this.sound.get('music_default'); // For example, stopping 'tradJap'
-            if (currentMusic) {
-                currentMusic.stop(); // Stop the current music
-            }
-
-            this.music = this.sound.add('music_battle');
-            this.music.setLoop(true);
-            this.music.play();
-        }
+        this.sound.stopAll();
+        this.music = this.sound.add('music_battle', {volume: 0.12});
+        this.music.setLoop(true);
+        this.music.play();
 
         this.enemySpawned1 = false;
         this.enemySpawned2 = false;
@@ -123,7 +116,7 @@ class TutorialScene extends BattleScene
     {
         this.cameras.main.fadeOut(500, 0, 0, 0);
         this.time.delayedCall(500, () => {
-            this.scene.start('DialogueScene2');
+            this.scene.start('DialogueScene3');
         });
     }
 
@@ -146,7 +139,7 @@ class TutorialScene extends BattleScene
         this.add.text(
             this.cameras.main.centerX,  // Centered on screen
              this.cameras.main.centerY,
-            "Mission Passed! Respect ++",
+            "Misiune îndeplinită cu succes!",
             {
                 fontSize: "48px",
                 color: "#000000",

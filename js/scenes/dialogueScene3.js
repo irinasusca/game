@@ -8,37 +8,35 @@ class DialogueScene3 extends Phaser.Scene {
 
 
     create() {
+
+        this.scene.stop('game-ui');
         
-        if (!this.sound.get('music_default')) {
-
-            let currentMusic = this.sound.get('music_battle'); //
-            if (currentMusic) {
-                currentMusic.stop(); // Stop the current music
-            }
-
-            this.music = this.sound.add('music_default');
-            this.music.setLoop(true);
-            this.music.play();
-        }
+        this.sound.stopAll();
+        this.music = this.sound.add('music_default', {volume: 0.4});
+        this.music.setLoop(true);
+        this.music.play();
 
         let dialogueData = [
-            { speaker: "diplomat", side: "right",  text: "Saigō, trebuie să modernizăm țara." },
-            { speaker: "diplomat", side: "right",  text: "Clasa samurailor este o relicvă." },
-            { speaker: "diplomat", side: "right",  text: "Avem nevoie de o armată recrutată, un guvern în stil occidental." },
-            { speaker: "diplomat", side: "right",  text: "Japonia trebuie să evolueze." },
-            { speaker: "samurai", side: "left",  text: "Vorbim de progres, dar cu ce preț?" },
-            { speaker: "samurai", side: "left",  text: "Samuraii au apărat onoarea Japoniei timp de secole." },
-            { speaker: "samurai", side: "left",  text: "Vrei să-i faci să dispară?" },
-            { speaker: "diplomat", side: "right",  text: "Ne așteptăm să se adapteze." },
-            { speaker: "diplomat", side: "right",  text: "Viitorul aparține poporului, nu războinicilor trecutului." },
-            { speaker: "samurai", side: "left",  text: "Asta este Japonia pentru care am luptat?" },
-            { speaker: "samurai", side: "left",  text: " O țară care își aruncă războinicii?" },
-            { speaker: "samurai", side: "left",  text: "Sabia mea… pare mai grea… ca și cum nu mai aparține acestei lumi noi." },
+            { speaker: "samurai", side: "left",  text: "Cum a putut shogunul să trimită soldați cu puștile goale pe front?" },
+            { speaker: "samurai", side: "left",  text: "Nu aveau nicio șansă împotriva noastră." },
+            { speaker: "evil_samurai", side: "right",  text: "Shogunul... a fugit." },
+            { speaker: "evil_samurai", side: "right",  text: "Toți liderii noștri s-au retras la Edo, ne-au abandonat în mijlocul bătăliei…" },
+            { speaker: "evil_samurai", side: "right",  text: "Am rămas fără conducători și fără resurse, nu mai avem nimic pentru care să luptăm." },
+            { speaker: "samurai", side: "left",  text: "Lupta nu s-a încheiat, iar voi veți putea să o continuați, atâta timp cât veți alege sa o faceți pentru împărat." },
+            { speaker: "samurai", side: "left",  text: "Interesul lui nu este de a se răzbuna pe voi." },
+            { speaker: "samurai", side: "left",  text: "Va începe o nouă eră în Japonia." },
+            { speaker: "samurai", side: "left",  text: "Și nu vom alunga străinii, cum v-a făcut Shogunul să credeți." },
+            { speaker: "samurai", side: "left",  text: "Împreună, putem construi un viitor bazat pe modernizare." },
+            { speaker: "samurai", side: "left",  text: "Dar nu vom lasa Occidentul să profite de noi, cum le-a permits shogunul." },
+            { speaker: "evil_samurai", side: "right",  text: "După tot ce s-a întâmplat… poate că nu o merităm, dar vă mulțumesc." },
+            { speaker: "evil_samurai", side: "right",  text: "E o șansă să ne răscumpărăm greșelile și să fim din nou de folos Japoniei." },
+
+            
         ];
 
-        let actTitle = "Guvernul Meiji (1871) - Prețul Modernizării";
+        let actTitle = "După lupta de la Toba-Fushimi...";
 
-        this.scene.start('DialogueScene', { dialogue: dialogueData, background: 'councilroom', nextScene:'DialogueScene4', actTitle: actTitle });
+        this.scene.start('DialogueScene', { dialogue: dialogueData, background: 'night', nextScene:'DialogueScene4', actTitle: actTitle });
 
 
     }

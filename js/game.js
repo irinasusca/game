@@ -1,8 +1,14 @@
 import BattleScene from "./scenes/battleScene.js";
+
 import TutorialScene from "./scenes/tutorialScene.js";
 import FinalBattleScene from "./scenes/finalBattleScene.js";
+
 import BattleSceneUI from "./scenes/battleSceneUI.js";
 
+import DialogueScene13 from "./scenes/dialogueScene13.js";
+import DialogueScene12 from "./scenes/dialogueScene12.js";
+import DialogueScene11 from "./scenes/dialogueScene11.js";
+import DialogueScene10 from "./scenes/dialogueScene10.js";
 import DialogueScene9 from "./scenes/dialogueScene9.js";
 import DialogueScene8 from "./scenes/dialogueScene8.js";
 import DialogueScene7 from "./scenes/dialogueScene7.js";
@@ -15,8 +21,9 @@ import DialogueScene1 from "./scenes/dialogueScene1.js";
 import DialogueScene0 from "./scenes/dialogueScene0.js";
 
 import DialogueScene from "./scenes/dialogueScene.js";
+
 import MainMenu from "./scenes/mainMenu.js";
-import Bibliografie from "./scenes/bibliografie.js";
+
 
 ///config
 let config = {
@@ -35,7 +42,7 @@ let config = {
             debug: false
         }
     },
-    scene: [MainMenu, Bibliografie, DialogueScene1,FinalBattleScene,  DialogueScene9, DialogueScene7, DialogueScene8,   DialogueScene6, DialogueScene3, TutorialScene,    BattleSceneUI, DialogueScene, BattleScene, DialogueScene0, DialogueScene2, DialogueScene4, DialogueScene5],
+    scene: [MainMenu,  DialogueScene1,FinalBattleScene,  DialogueScene9, DialogueScene7, DialogueScene8,   DialogueScene6, DialogueScene3, TutorialScene,    BattleSceneUI, DialogueScene, BattleScene, DialogueScene0, DialogueScene2, DialogueScene4, DialogueScene5, DialogueScene10, DialogueScene11, DialogueScene12, DialogueScene13],
 };
 
 //create new game <- config

@@ -9,35 +9,31 @@ class DialogueScene5 extends Phaser.Scene {
 
     create() {
         
-        if (!this.sound.get('music_default')) {
-
-            let currentMusic = this.sound.get('music_battle'); //
-            if (currentMusic) {
-                currentMusic.stop(); // Stop the current music
-            }
-
-            this.music = this.sound.add('music_default');
-            this.music.setLoop(true);
-            this.music.play();
-        }
+        
 
         let dialogueData = [
-            { speaker: "samurai", side: "left",  text: "Japonia trebuie să acționeze." },
-            { speaker: "samurai", side: "left",  text: "Coreea îl insultă pe împărat." },
-            { speaker: "samurai", side: "left",  text: "Dacă nu facem nimic, arătăm slăbiciune." },
-            { speaker: "diplomat", side: "right",  text: "Propui un război fără motiv!" },
-            { speaker: "diplomat", side: "right",  text: "Trebuie să ne concentrăm pe dezvoltarea Japoniei..." },           
-            { speaker: "diplomat", side: "right",  text: "Nu pe cuceriri inutile!" },           
-            { speaker: "samurai", side: "left",  text: "Lași! Ați uitat Bushidō? " },
-            { speaker: "samurai", side: "left",  text: " Un războinic nu întoarce spatele unei insulte!" },
-            { speaker: "diplomat", side: "right",  text: "Un războinic care se agață de trecut este orb la viitor." },
-            { speaker: "samurai", side: "left",  text: "Ei refuză să acționeze. Au abandonat valorile noastre.." },
-            { speaker: "samurai", side: "left",  text: "Dacă guvernul nu mai servește Japonia, atunci nici eu nu-l mai servesc." },
+            { speaker: "woman", side: "right",  text: "Dragă, ai auzit știrile?" },
+            { speaker: "samurai", side: "left",  text: "Nu… Ce s-a întâmplat?" },
+            { speaker: "woman", side: "right",  text: "Guvernul a trimis o navă de război aici, în Kagoshima." },
+            { speaker: "woman", side: "right",  text: "Vor să ne confişte armele din arsenal." },
+            { speaker: "woman", side: "right",  text: "Se tem că veți porni o revoltă." },
+            { speaker: "samurai", side: "left",  text: "O revoltă?" },
+            { speaker: "samurai", side: "left",  text: "Tot ce am făcut de când m-am întors a fost să întemeiez Shi-gakkō, școala militară privată pentru samurai." },
+            { speaker: "samurai", side: "left",  text: "Nu am încălcat nicio lege!" },
+            { speaker: "woman", side: "right",  text: "Ei cred că școala este, de fapt, o organizație politică ostilă guvernului imperial." },
+            { speaker: "woman", side: "right",  text: "Și se spune că aceasta nu va fi singura navă trimisă." },
+            { speaker: "woman", side: "right",  text: "Trebuie să fii pregătit." },
+            { speaker: "woman", side: "right",  text: "Nu cred că se vor opri aici." },
+            { speaker: "samurai", side: "left",  text: "Trebuie să-i adun pe ceilalți lideri din Kagoshima." },
+            { speaker: "samurai", side: "left",  text: "Cei mai mulți sunt foști elevi ai Shi-gakkō." },
+            { speaker: "samurai", side: "left",  text: "Nu vor tolera faptul că guvernul ne tratează ca pe niște trădători." },
+            { speaker: "woman", side: "right",  text: "Te rog… ai grijă de tine. Nu vreau să te pierd." },
+
         ];
 
-        let actTitle = "Misiunea Respinsă în Coreea (1873) – Punctul de Rupere";
+        let actTitle = "5 ani mai târziu, în Kagoshima...";
 
-        this.scene.start('DialogueScene', { dialogue: dialogueData, background: 'councilroom', nextScene:'DialogueScene6', actTitle: actTitle });
+        this.scene.start('DialogueScene', { dialogue: dialogueData, background: 'inside_house', nextScene:'DialogueScene6', actTitle: actTitle });
 
 
     }

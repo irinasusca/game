@@ -7,6 +7,7 @@ class DialogueScene extends Phaser.Scene {
     {
         super({key:"DialogueScene"});
         this.dialogueData = [];
+        this.actTitleActive = true;
     }
 
     init(data)
@@ -16,22 +17,37 @@ class DialogueScene extends Phaser.Scene {
         this.backgroundKey = data.background || null;
         this.sceneKey = data.nextScene || null;
         this.actTitle = data.actTitle || "";
+        this.actTitleActive = true;
     }
 
     preload()
     {
-        this.load.image('city_bg', '../assets/city_bg.png');
-        this.load.image('rain_bg', '../assets/rain.png');
-        this.load.image('councilroom', '../assets/council.png');
-        this.load.image('rebellion', '../assets/revolta.png');
+
         this.load.image('samurai', '../assets/samurai_determined.png');
         this.load.image('evil_samurai','../assets/evilsamurai.png' );
         this.load.image('woman','../assets/woman.png' );
         this.load.image('diplomat','../assets/diplomat.png' );
+        this.load.image('general','../assets/diplomat.png' );
+
+        
+        this.load.image('rain_bg', '../assets/rain.png');
+        this.load.image('councilroom', '../assets/meijiDebate.png');
+        this.load.image('rebellion', '../assets/revolta.png');
+        this.load.image('inside_house', '../assets/interior.jpg');
+        this.load.image('garden', '../assets/gradina.jpg');
+        this.load.image('councilroom_kagoshima', '../assets/council.png');
+        this.load.image('war_prep', '../assets/PregatireRazboi.jpg');
+        this.load.image('night', '../assets/noapte.jpg');
+        this.load.image('shiroyama', '../assets/ShiroyamaBattle.jpg');
+
+        
         this.load.image('dialogueBox', '../assets/dialogue.png');
+
         this.load.image('cutscene1', '../assets/cutscene1.jpg');
         this.load.image('cutscene2', '../assets/cutscene2.PNG');
+
         this.load.image('statue', '../assets/statue.png');
+        this.load.image('edoArt', '../assets/castleEdo.jpg')
 
         this.add.text(0, 0, "", { fontFamily: "'IM Fell English SC', serif" }).setVisible(false);
     }
@@ -66,9 +82,9 @@ class DialogueScene extends Phaser.Scene {
         this.dialogueBox = this.add.image(600, 700, 'dialogueBox').setOrigin(0.5,0.5).setDepth(100).setScale(1.1);
         this.dialogueText = this.add.text(600, 720, '', { 
             fontFamily: "'IM Fell English SC', serif",
-            fontSize: '34px',
+            fontSize: '28px',
             color: '#302d2a',
-            wordWrap: { width: 580 } 
+            wordWrap: { width: 650 } 
         }).setOrigin(0.5).setDepth(101);
 
         this.speakerText = this.add.text(600, 660, '', { 
@@ -84,23 +100,30 @@ class DialogueScene extends Phaser.Scene {
 
         this.dialogueIndex = 0;
 
-        this.time.delayedCall(2500, () => {  // Wait 2.5 seconds before fade out
+        this.time.delayedCall(3500, () => {  // Wait 2.5 seconds before fade out
             this.tweens.add({
                 targets: [this.actText, this.actBackground],
                 alpha: 0,
-                duration: 1000, // 1 second fade-out
+                duration: 1500, // 1 second fade-out
                 onComplete: () => {
                     this.actText.destroy();
                     this.actBackground.destroy();
-                    
+                    this.actTitleActive = false;
                 }
             });
         });
     
         this.showNextDialogue();
 
-        this.input.on('pointerdown', () => this.showNextDialogue());
-        this.input.keyboard.on('keydown-SPACE', () => this.showNextDialogue());
+        this.input.on('pointerdown', () => {
+            if (!this.actTitleActive) this.showNextDialogue();
+        });
+        
+        this.input.keyboard.on('keydown-SPACE', () => {
+            if (!this.actTitleActive) this.showNextDialogue();
+        });
+
+
         this.backspaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.BACKSPACE);
 
         this.backspaceKey.on('down', () => {
@@ -127,20 +150,34 @@ class DialogueScene extends Phaser.Scene {
         }
 
         if(this.dialogueIndex > 0)
-            this.sound.play('dialogueClick');
+            this.sound.play('dialogueClick', {volume: 0.3});
 
         let { speaker, side, text } = this.dialogueData[this.dialogueIndex];
 
 
         ///daca nu vrem sa apara in stanga din prima eliminam
-        if(!(this.sceneKey === 'DialogueScene8' || this.sceneKey === 'DialogueScene9' || this.sceneKey === 'MainMenu'))
+        if(!(this.sceneKey === 'DialogueScene13' || this.sceneKey === 'FinalBattleScene' || this.sceneKey === 'DialogueScene12' || this.sceneKey === 'DialogueScene1' || this.sceneKey === 'MainMenu'))
             this.leftCharacter.setTexture('samurai').setVisible(true);
 
-        this.speakerText.setText(speaker.replace(/_/g, ' '));
+
+        if(speaker==="samurai")
+            this.speakerText.setText("Saigō Takamori");
+        if(speaker==="diplomat")
+            this.speakerText.setText("Diplomat imperial");
+        if(speaker==="evil_samurai")
+            this.speakerText.setText("Samurai");
+        if(speaker==="woman")
+            this.speakerText.setText("Soția lui Saigō Takamori");
+        if(speaker==="general")
+            this.speakerText.setText("General Imperial");
+
+
+
         this.speakerText.setColor('#000000');
         this.dialogueText.setText(text);
 
         if (side === 'left' || side === 'left_hidden') {
+            
             if (speaker === 'samurai')
                 this.speakerText.setColor('#8B0000'); // Dark red
             this.speakerText.setX(300); // Left side
@@ -149,23 +186,28 @@ class DialogueScene extends Phaser.Scene {
             this.dialogueText.setX(300);
             this.dialogueText.setOrigin(0, 0.5);
             this.dialogueText.setAlign('left');
+
+            
+            
         } else if(side === 'right' || side === 'right_hidden') {
              // Default black
-            this.speakerText.setX(900); // Right side (assuming 1200 width)
+            this.speakerText.setX(920); // Right side (assuming 1200 width)
             this.speakerText.setOrigin(1, 0.5);
 
-            this.dialogueText.setX(900);
+            this.dialogueText.setX(920);
             this.dialogueText.setOrigin(1, 0.5);
             this.dialogueText.setAlign('right');
         }
         else {
-            this.dialogueText.setY(710);
+            this.dialogueText.setY(700);
         }
 
         
         ///pt emotii, kiana_happy, kiana_sad etc .pmg
         if (side === 'left') {
+            this.leftCharacter.setFlipX(speaker !== 'samurai');
             this.leftCharacter.setTexture(speaker).setVisible(true);
+            
             //this.rightCharacter.setVisible(false);
         } else if (side === 'right') {
             this.rightCharacter.setTexture(speaker).setVisible(true);
@@ -176,8 +218,8 @@ class DialogueScene extends Phaser.Scene {
     }
 
     transitionTo() {
-        this.cameras.main.fadeOut(500, 0, 0, 0);
-        this.time.delayedCall(500, () => {
+        this.cameras.main.fadeOut(300, 0, 0, 0);
+        this.time.delayedCall(300, () => {
             this.scene.start(this.sceneKey);
         });
     }

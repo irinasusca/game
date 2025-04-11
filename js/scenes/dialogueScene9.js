@@ -9,27 +9,31 @@ class DialogueScene9 extends Phaser.Scene {
 
     create() {
 
-        this.sound.stopAll();
-
-        this.music = this.sound.add('music_default');
-        this.music.setLoop(true);
-        this.music.play();
+        
         
         let dialogueData = [
-            { speaker: "", side: "",  text: "Astăzi, în inima Tokyo-ului, în Parcul Ueno, o statuie privește spre orizont." },
-            { speaker: "", side: "",  text: "Nu înfățișează un războinic în armură, nici un lider cu sabia ridicată..." },
-            { speaker: "", side: "",  text: "Este Saigō Takamori—numit cândva trădător, acum erou al Japoniei." },
-            { speaker: "", side: "",  text: "Ultimul samurai, prins între trecut și viitor." },
-            { speaker: "", side: "",  text: "Lumea pe care a visat-o este aici. " },            
-            { speaker: "", side: "",  text: "Japonia s-a ridicat ca o națiune modernă... " },      
-            { speaker: "", side: "",  text: "Saigō Takamori (1828 – 1877)" },      
-            { speaker: "", side: "",  text: "Ultimul Samurai. Onoarea lui trăiește în istorie." },   
-
+            { speaker: "samurai", side: "left",  text: "În sfârșit… aproape am ajuns în Kagoshima." },
+            { speaker: "samurai", side: "left",  text: "Haideți să facem un popas aici, pe dealul Shiroyama." },
+            { speaker: "samurai", side: "left",  text: "Câți am mai rămas?" },
+            { speaker: "evil_samurai", side: "right",  text: "Doar 500, Saigō…" },
+            { speaker: "evil_samurai", side: "right",  text: "Dar ți-am spus, vom rămâne loiali până la capăt." },
+            { speaker: "evil_samurai", side: "right",  text: "Satsuma nu se predă ușor..." },
+            { speaker: "samurai", side: "left",  text: "Privește… în depărtare se văd forțele imperiale." },
+            { speaker: "samurai", side: "left",  text: "Ne vor ajunge din urmă în curând." },
+            { speaker: "samurai", side: "left",  text: "Par să fie… cel puțin 30.000." },
+            { speaker: "samurai", side: "left",  text: "Suntem înconjurați." },
+            { speaker: "samurai", side: "left",  text: "Nu mai are sens să fugim." },
+            { speaker: "evil_samurai", side: "right",  text: "Și atunci, ce ordine ne dai?" },
+            { speaker: "samurai", side: "left",  text: "Ne luptăm." },
+            { speaker: "samurai", side: "left",  text: "Până la ultimul om." },
+            { speaker: "samurai", side: "left",  text: "Moartea ne așteaptă, dar onoarea ne va supraviețui." },
+            { speaker: "evil_samurai", side: "right",  text: "Așa să fie!" },
+            
         ];
 
-        let actTitle = "Moștenirea lui Saigō Takamori";
+        let actTitle = "Bătălia de la Shiroyama";
 
-        this.scene.start('DialogueScene', { dialogue: dialogueData, background: 'statue', nextScene:'MainMenu', actTitle: actTitle });
+        this.scene.start('DialogueScene', { dialogue: dialogueData, background: 'shiroyama', nextScene:'DialogueScene10', actTitle: actTitle });
 
 
     }

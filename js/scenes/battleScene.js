@@ -25,7 +25,7 @@ class BattleScene extends Phaser.Scene {
 
     preload()
     {
-        this.load.image('background', '../assets/grass_14.png');
+        
         this.load.image('arena', '../assets/arena2.png');        
         
 

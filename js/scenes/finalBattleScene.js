@@ -22,7 +22,7 @@ class FinalBattleScene extends BattleScene
         super.preload();
         this.load.image('tip', '../assets/tip.png');
         this.load.image('tipBox', '../assets/tipBox.png');
-        this.load.image('bg', '../assets/revolta.png');
+        this.load.image('bgFinalBattle', '../assets/ShiroyamaBattle.jpg');
         this.load.spritesheet('buttons',
             '../assets/buttonUI.png',
             {frameWidth: 16, frameHeight: 16 }
@@ -37,9 +37,11 @@ class FinalBattleScene extends BattleScene
             // Stop any currently playing track
             this.sound.stopAll();
 
-            this.music = this.sound.add('music_battle');
+            this.music = this.sound.add('music_battle', {volume: 0.12});
             this.music.setLoop(true);
             this.music.play();
+
+
         
 
         this.enemySpawned1 = false;
@@ -47,8 +49,8 @@ class FinalBattleScene extends BattleScene
         this.bossSpawned = false;
         this.stageFinished = false;
 
-        let bg = this.add.sprite(this.cameras.main.centerX, this.cameras.main.centerY, 'bg');
-        bg.setDepth(-1);
+        let bg = this.add.sprite(this.cameras.main.centerX, this.cameras.main.centerY, 'bgFinalBattle');
+        bg.setDepth(0);
         bg.setScrollFactor(0);
         bg.setOrigin(0.5, 0.5);
         bg.setScale(2);
@@ -124,7 +126,7 @@ class FinalBattleScene extends BattleScene
     {
         this.cameras.main.fadeOut(1000, 0, 0, 0);
         this.cameras.main.once('camerafadeoutcomplete', () => {
-            this.scene.start('DialogueScene7');
+            this.scene.start('DialogueScene11');
         });
     }
 

@@ -80,7 +80,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     handleAttack()
     {
         if(this.attackCooldown) return;
-        this.scene.sound.play('woosh');
+        this.scene.sound.play('woosh', { volume: 1 });
         this.attacking = true; 
         this.anims.play('attack', true);
         console.log("attack");
@@ -126,7 +126,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         if (this.healthState === HealthState.Damage) return;
 
         if (this.scene.input.activePointer.rightButtonDown() && !this.defendCooldown) {
-            this.scene.sound.play('clash');
+            this.scene.sound.play('clash', {volume: 0.25});
             console.log("Defense successful! No damage taken.");
             this.defendCooldown = true; // Activate cooldown
             this.scene.time.delayedCall(4000, () => {
@@ -174,7 +174,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         if (action === 'start' && !gravelAudio) {
             gravelAudio = this.scene.sound.add('gravel', {
                 loop: true,  // Loop the sound while moving
-                volume: 0.2,  // Set the volume to 50%
+                volume: 0.1,  // Set the volume to 50%
                 rate: 3  // Set the volume to 50%
             });
             gravelAudio.play();

@@ -90,7 +90,7 @@ class Opp extends Phaser.Physics.Arcade.Sprite {
         ///ataca jucatorul
         ///se opreste 3 secunde
         if(this.attackCooldown) return;
-        this.scene.sound.play('woosh', { volume: 0.5 });
+        this.scene.sound.play('woosh', { volume: 1.5 });
         this.setVelocity(0, 0);
         this.anims.play(`${this.colorVariant}-atk`, true);
         this.attackCooldown = true; 

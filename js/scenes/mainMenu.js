@@ -10,16 +10,19 @@ class MainMenu extends Phaser.Scene {
         this.load.image('playButton', '../assets/dialogue.png');  // Replace with your button images
         this.load.image('biblioButton', '../assets/dialogue.png');
         this.load.image('textBoxy', '../assets/dialogue.png');
-        this.load.image('bgMain', '../assets/statue.png');
+        this.load.image('bgMain', '../assets/statuePainting.jpg');
         this.load.audio('music_default', '../assets/audio/tradJap.mp3');
         this.load.audio('music_battle', '../assets/audio/warmusic.mp3');
         this.load.audio('woosh', '../assets/audio/woosh.wav');
         this.load.audio('clash', '../assets/audio/clash.wav');
         this.load.audio('gravel', '../assets/audio/gravel.wav');
         this.load.audio('dialogueClick', '../assets/audio/poate3.wav');
+        this.load.audio('harakiri', '../assets/audio/sword_slash.mp3');
     }
 
     create() {
+
+        this.scene.stop('game-ui');
         
         let bg = this.add.image(0, 0, 'bgMain')
                 .setDepth(100)
@@ -29,6 +32,7 @@ class MainMenu extends Phaser.Scene {
             let scale = Math.max(1200 / bg.width, 800 / bg.height); // Scale to fill 1200 width while keeping aspect ratio
             bg.setScale(scale);
        
+            bg.setX(this.cameras.main.centerX - bg.displayWidth / 2);
 
         // Play Button
         let playButton = this.add.image(600, 300, 'playButton').setInteractive().setOrigin(0.5);
